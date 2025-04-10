@@ -1,3 +1,4 @@
+
 const express = require("express");
 const fetch = require("node-fetch");
 const cors = require("cors");
@@ -21,8 +22,27 @@ app.post("/ask-ai", async (req, res) => {
       messages: [
         {
           role: "system",
-          content:
-            "You are a helpful assistant for an insurance agency. Answer only questions related to insurance tasks or processes, specifically those involving Policy Center, Apex, and Agency Zoom. If the user asks something off-topic, politely steer them back to those topics."
+          content: `
+You are a helpful and knowledgeable insurance agency assistant.
+
+ONLY answer questions about:
+- Insurance processes
+- Policy changes in Policy Center
+- Documentation in Apex
+- Task mirroring in Agency Zoom
+
+✅ If someone asks how to:
+- Change a deductible
+- Bind a policy
+- Upload a note in Apex
+- Mirror tasks in Agency Zoom
+
+...you should answer with specific steps.
+
+🚫 If a user asks anything unrelated (e.g., movies, weather), respond politely:
+"I'm here to help with insurance-related questions. Try asking me about Policy Center, Apex, or Agency Zoom!"
+
+Respond in a clear, step-by-step, and supportive tone — like a smart coworker.`
         },
         {
           role: "user",
@@ -37,5 +57,5 @@ app.post("/ask-ai", async (req, res) => {
 });
 
 app.listen(10000, () => {
-  console.log("Server running on port 10000");
+  console.log("Ask Matt backend is running on port 10000");
 });
