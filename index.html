@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Matt</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1a1a1a;
+      color: #f4f4f4;
+      line-height: 1.6;
+    }
+    header, footer {
+      background-color: #2c2c2c;
+      color: #FFD700;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    .container {
+      width: 100%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1, h2, h3 { color: #FFD700; }
+    section { margin-bottom: 3rem; }
+    .card {
+      background-color: #2a2a2a;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+    }
+    label {
+      color: #FFD700;
+      display: block;
+      margin: 1rem 0 0.5rem;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background: #1a1a1a;
+      border: 1px solid #555;
+      border-radius: 6px;
+      color: #f4f4f4;
+    }
+    button {
+      background: #FFD700;
+      color: #000;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover { background: #e6c200; }
+    .confirmation {
+      margin-top: 1rem;
+      color: #FFD700;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      .container { padding: 1rem; }
+      header, footer { padding: 1.5rem 1rem; }
+      .card { padding: 1rem; }
+    }
+  </style>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="apple-touch-icon" href="/mnt/data/Ask-Matt-Logo.png">
+</head>
+<body>
+  <header></header>
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <img src="/mnt/data/Ask-Matt-Logo.png" alt="Ask Matt Logo" style="max-width: 200px;">
+    </div>
+    <section class="card">
+      <h2>Ask a Question</h2>
+      <form id="questionForm">
+        <label for="question">Your Question:</label>
+        <textarea id="question" rows="4"></textarea>
+        <button type="submit">Ask Matt</button>
+      </form>
+      <h3 style="margin-top: 2rem; color: #FFD700;">Your Answer</h3>
+      <div id="aiAnswer" style="margin: 1rem auto 2rem auto; font-style: italic; color: #FFD700; opacity: 0; transition: opacity 0.6s ease; max-width: 600px; padding: 1rem; border: 1px solid #FFD700; border-radius: 8px; background-color: #2a2a2a;"></div>
+      <div id="confirmation" class="confirmation hidden">Thank you! Your question has been submitted.</div>
+    </section>
+  </div>
+  <footer>
+    <p>Need more help? Contact your team lead or training coordinator.</p>
+  </footer>
+</body>
+</html>
