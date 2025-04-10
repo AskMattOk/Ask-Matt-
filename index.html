@@ -27,13 +27,54 @@
     .card {
       background: #2a2a2a;
       border-radius: 12px;
-      padding: 1.5rem;
+      padding: 2rem;
       margin-bottom: 2rem;
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.15);
+      text-align: left;
+    }
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #FFD700;
+      padding-bottom: 0.5rem;
+    }
+    textarea {
+      width: 100%;
+      background-color: #1a1a1a;
+      color: #FFD700;
+      border: 1px solid #FFD700;
+      border-radius: 8px;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+    button {
+      background: #FFD700;
+      color: #1a1a1a;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    button:hover {
+      background: #e6c200;
+    }
+    ol {
+      padding-left: 1.5rem;
+    }
+    ol li {
+      margin-bottom: 0.75rem;
     }
     #aiAnswer {
       opacity: 0;
       transition: opacity 0.6s ease;
+      background-color: #2a2a2a;
+      color: #FFD700;
+      padding: 1rem;
+      border: 1px solid #FFD700;
+      border-radius: 8px;
+      margin-top: 1rem;
     }
   </style>
 </head>
@@ -46,7 +87,7 @@
       <h2>Ask Me Anything</h2>
       <form id="questionForm">
         <label for="question">Your Question:</label>
-        <textarea id="question" rows="4" style="width:100%; padding:0.5rem;"></textarea>
+        <textarea id="question" rows="4"></textarea>
         <br />
         <button type="submit">Ask Matt</button>
       </form>
@@ -54,12 +95,12 @@
 
     <section class="card">
       <h2>Your Answer</h2>
-      <div id="aiAnswer" style="margin-top: 1rem; font-style: italic; color: #FFD700; max-width: 700px; padding: 1rem; border: 1px solid #FFD700; border-radius: 8px; background-color: #2a2a2a; margin-left: auto; margin-right: auto;"></div>
+      <div id="aiAnswer"></div>
     </section>
 
     <section class="card">
       <h2>Policy Center</h2>
-      <ol style="text-align: left;">
+      <ol>
         <li>Open the policy file.</li>
         <li>Click <strong>Actions > Change Policy</strong> and select the date.</li>
         <li>Go to <strong>Dwelling</strong> or <strong>Vehicle/Drivers</strong> and verify info.</li>
@@ -71,7 +112,7 @@
 
     <section class="card">
       <h2>Apex</h2>
-      <ol style="text-align: left;">
+      <ol>
         <li>Log in to Apex and search for the client.</li>
         <li>Click the <strong>Notes</strong> tab in the client’s profile.</li>
         <li>Select <strong>Add Note</strong> and enter relevant details.</li>
@@ -81,7 +122,7 @@
 
     <section class="card">
       <h2>Agency Zoom</h2>
-      <ol style="text-align: left;">
+      <ol>
         <li>Open Agency Zoom and locate the client profile.</li>
         <li>Match the client’s notes/tasks to what’s in Apex.</li>
         <li>Manually add or edit entries in Agency Zoom to reflect Apex updates.</li>
@@ -107,6 +148,7 @@
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ question })
           });
+
           const data = await response.json();
           const answer = data.choices?.[0]?.message?.content || "Sorry, I couldn't find an answer.";
 
